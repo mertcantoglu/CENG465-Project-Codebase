@@ -6,12 +6,13 @@
 -- Restart the MySQL server to apply changes.
 
 -- Connect the Replica to the Master
-CHANGE MASTER TO
-    MASTER_HOST='MASTER-IP',
-    MASTER_USER='berkay_repl',
-    MASTER_PASSWORD='berkay',
-    MASTER_LOG_FILE='mysql-bin.000001',  -- From the note
-    MASTER_LOG_POS=0;                  -- From the note
+              -- From the note
+CHANGE REPLICATION SOURCE TO
+  SOURCE_HOST='MASTER-IP',
+  SOURCE_USER='berkay_repl',
+  SOURCE_PASSWORD='berkay',
+  SOURCE_LOG_FILE='mysql-bin.000001',
+  SOURCE_LOG_POS=0;
 
 -- Start the Slave Process
 START REPLICA;
